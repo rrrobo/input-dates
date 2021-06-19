@@ -2,6 +2,8 @@
 
 複数日付選択コンポーネント
 
+<img width="610" alt="input-day" src="https://user-images.githubusercontent.com/1715217/122636156-b0c92e80-d122-11eb-8198-3b02c9dc10be.png">
+
 ```
 <script type="module" src="https://code4fukui.github.io/input-day/input-day.js"></script>
 <input-day id="inputday"></input-day>
