@@ -2,7 +2,7 @@
 
 複数日付選択コンポーネント
 
-![image](https://user-images.githubusercontent.com/1715217/122636184-cd656680-d122-11eb-8ca3-a4808ca5398a.png)
+<img src=https://user-images.githubusercontent.com/1715217/122636184-cd656680-d122-11eb-8ca3-a4808ca5398a.png width=300>
 
 ```
 <script type="module" src="https://code4fukui.github.io/input-day/input-day.js"></script>
