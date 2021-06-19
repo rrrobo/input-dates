@@ -199,3 +199,5 @@ class InputDates extends HTMLElement {
 }
 
 customElements.define("input-dates", InputDates);
+
+export { InputDates };
