@@ -1,6 +1,7 @@
 # input-day tag
 
-複数日付選択コンポーネント
+- 複数日付選択コンポーネント
+- [サンプルアプリ](https://code4fukui.github.io/input-day/)
 
 <img src=https://user-images.githubusercontent.com/1715217/122636184-cd656680-d122-11eb-8ca3-a4808ca5398a.png width=300>
 
