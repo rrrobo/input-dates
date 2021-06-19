@@ -68,7 +68,7 @@ class InputDates extends HTMLElement {
 
     style({
       ".calcell": {
-        "font-size": "17px",
+        "font-size": "16px",
         "vertical-align": "middle",
         height: "2em",
         //"border": "1px solid gray",
@@ -76,6 +76,7 @@ class InputDates extends HTMLElement {
         margin: "0em 0",
         padding: "0em .5em",
         "text-align": "center",
+        "background-color": "white",
       },
       ".checked": {
         "background-color": "#77e !important",
