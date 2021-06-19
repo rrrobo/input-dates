@@ -3,7 +3,7 @@ import { Day } from "https://code4fukui.github.io/day-es/Day.js";
 import { isHoliday } from "https://code4fukui.github.io/day-es/Holiday.js";
 //import { Cal } from "https://code4fukui.github.io/day-es/examples/day-calendar.js"; // reference
 
-class InputDay extends HTMLElement {
+class InputDates extends HTMLElement {
   constructor() {
     super();
     const cr = (tag) => document.createElement(tag);
@@ -198,4 +198,4 @@ class InputDay extends HTMLElement {
   }
 }
 
-customElements.define("input-day", InputDay);
+customElements.define("input-dates", InputDates);
