@@ -194,7 +194,13 @@ class InputDates extends HTMLElement {
     return this.checked.map(d => d.toString()).join(",");
   }
   set value(days) {
-    this.checked = days.split(",").map(s => new Day(s));
+    this.checked = days.split(",").map(s => {
+      try {
+        return new Day(s)
+      } catch (e) {
+      }
+      return null;
+    }).filter(d => d);
     this.redraw();
   }
 }
