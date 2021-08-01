@@ -1,10 +1,15 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
 <script type="module" src="./input-dates.js"></script>
 <body style="text-align:center">
+<style>
+input {
+  width: 80vw;
+}
+</style>
 
 <h1>input-dates tag</h1>
 <input-dates id="inputdates"></input-dates><br>
-<textarea id="chk" style="width:80vw;height:5em">2021-06-19,2021-06-20,2021-07-01</textarea>
+<input id="chk" value="2021-06-19,2021-06-20,2021-07-01"><br>
 
 <script type="module">
 inputdates.value = chk.value;
@@ -14,6 +19,34 @@ inputdates.onchange = () => {
 };
 inputdates.value = "a,b,2021-05-05";
 console.log(inputdates.value);
+</script>
+
+<h2>single=true</h2>
+<input-dates id="inputdates_s" single=true></input-dates><br>
+<input id="chk2"><br>
+<script type="module">
+inputdates_s.onchange = () => {
+  console.log(inputdates_s.value);
+  chk2.value = inputdates_s.value;
+};
+</script>
+
+<h2>setAvailable</h2>
+<input-dates id="inputdates3" x-single=true></input-dates><br>
+<input id="chk3"><br>
+<script type="module">
+import { Day } from "https://code4fukui.github.io/day-es/Day.js";
+
+//inputdates3.setAvailable("2021-08-03,2021-08-04,2021-08-05");
+const list = [];
+for (let i = new Day("2021-08-15"); !i.isAfter(new Day("2021-09-10")); i = i.dayAfter(1)) {
+  list.push(i);
+}
+inputdates3.setAvailable(list);
+
+inputdates3.onchange = () => {
+  chk3.value = inputdates3.value;
+};
 </script>
 
 </body>

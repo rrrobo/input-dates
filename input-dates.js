@@ -50,6 +50,9 @@ class InputDates extends HTMLElement {
       d.className = "calcell " + s;
       div.appendChild(d);
       d.onclick = () => {
+        if (d.classList.contains("disabled")) {
+          return;
+        }
         const n = d.textContent;
         if (d.classList.contains("checked")) {
           d.classList.remove("checked");
@@ -57,6 +60,9 @@ class InputDates extends HTMLElement {
           this.checked = this.checked.filter(c => !c.equals(day));
           this.changed();
         } else if (parseInt(n) == n) {
+          if (this.getAttribute("single") == "true") {
+            this.clear();
+          }
           d.classList.add("checked");
           this.checked.push(new Day(this.getYear(), this.getMonth(), parseInt(n)));
           this.checked.sort((a, b) => a.getDayOfGregorian() - b.getDayOfGregorian());
@@ -82,6 +88,9 @@ class InputDates extends HTMLElement {
         "background-color": "#77e !important",
         "color": "white",
       },
+      ".disabled": {
+        "color": "#ccc",
+      },
       ".sun": {
         "background-color": "#fee",
       },
@@ -90,7 +99,11 @@ class InputDates extends HTMLElement {
       },
       ".holiday": {
         //"background-color": "#f88",
-        "color": "#f88",
+        "color": "#f33",
+      },
+      ".disabled .holiday": {
+        //"background-color": "#f88",
+        "color": "#fcc",
       },
     });
 
@@ -114,6 +127,7 @@ class InputDates extends HTMLElement {
       for (let i = 7; i < len; i++) {
         const d = div.childNodes[i];
         d.classList.remove("checked");
+        d.classList.remove("disabled");
         let s = "";
         const day = i - 6 - caloff;
         if (day > 0 && day <= lastday) {
@@ -126,6 +140,9 @@ class InputDates extends HTMLElement {
           }
           if (this.checked.find(d => d.equals(dday))) {
             d.classList.add("checked");
+          }
+          if (this.available && !this.available.find(d => d.equals(dday))) {
+            d.classList.add("disabled");
           }
           s = "<div class='" + cls.join(" ") + "'>" + day + "</div>";
           if (this.ondraw != null) {
@@ -190,17 +207,40 @@ class InputDates extends HTMLElement {
     this.day = new Day();
     this.redraw();
   }
-  get value() {
-    return this.checked.map(d => d.toString()).join(",");
-  }
-  set value(days) {
-    this.checked = days.split(",").map(s => {
+  makeDaysArray(days) {
+    if (Array.isArray(days)) {
+      return days.map(s => {
+        if (s instanceof Day) {
+          return s;
+        }
+        try {
+          return new Day(s)
+        } catch (e) {
+        }
+        return null;
+      }).filter(d => d);
+    }
+    return days.split(",").map(s => {
       try {
         return new Day(s)
       } catch (e) {
       }
       return null;
     }).filter(d => d);
+  }
+  get value() {
+    return this.checked.map(d => d.toString()).join(",");
+  }
+  set value(days) {
+    this.checked = this.makeDaysArray(days);
+    this.redraw();
+  }
+  clear() {
+    this.caldiv.childNodes.forEach((d) => d.classList.remove("checked"));
+    this.checked = [];
+  }
+  setAvailable(values) {
+    this.available = this.makeDaysArray(values);
     this.redraw();
   }
 }
