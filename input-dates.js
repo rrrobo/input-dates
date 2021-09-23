@@ -22,10 +22,10 @@ class InputDates extends HTMLElement {
     const prev = cr("span");
     prev.textContent = "◀";
     prev.onclick = () => {
+      this.prevMonth();
       if (this.onchangeMonth) {
         this.onchangeMonth();
       }
-      this.prevMonth();
     };
     h2.appendChild(prev);
     const center = cr("span");
@@ -39,10 +39,10 @@ class InputDates extends HTMLElement {
     next.textContent = "▶";
     h2.appendChild(next);
     next.onclick = () => {
+      this.nextMonth();
       if (this.onchangeMonth) {
         this.onchangeMonth();
       }
-      this.nextMonth();
     };
 
     const div = cr("div");
