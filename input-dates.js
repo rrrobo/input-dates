@@ -201,6 +201,12 @@ class InputDates extends HTMLElement {
   getMonth() {
     return this.day.month;
   }
+  getFirstDay() {
+    return this.day.getFirstDayOfMonth();
+  }
+  getLastDay() {
+    return this.day.getLastDayOfMonth();
+  }
   setDay(day) {
     this.day = day;
     this.redraw();
