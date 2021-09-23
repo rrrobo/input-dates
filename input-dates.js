@@ -21,7 +21,12 @@ class InputDates extends HTMLElement {
     h2.style.margin = ".2em 0";
     const prev = cr("span");
     prev.textContent = "◀";
-    prev.onclick = () => this.prevMonth();
+    prev.onclick = () => {
+      if (this.onchangeMonth) {
+        this.onchangeMonth();
+      }
+      this.prevMonth();
+    };
     h2.appendChild(prev);
     const center = cr("span");
     center.className = "day";
@@ -33,7 +38,12 @@ class InputDates extends HTMLElement {
     const next = cr("span");
     next.textContent = "▶";
     h2.appendChild(next);
-    next.onclick = () => this.nextMonth();
+    next.onclick = () => {
+      if (this.onchangeMonth) {
+        this.onchangeMonth();
+      }
+      this.nextMonth();
+    };
 
     const div = cr("div");
     this.caldiv = div;
