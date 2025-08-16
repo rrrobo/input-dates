@@ -1,5 +1,5 @@
 import { style } from "./stdom.min.js";
-import { Day } from "https://cdn.jsdelivr.net/gh/rrrobo/day-es/Day.min.js";
+import { Day } from "https://cdn.jsdelivr.net/gh/rrrobo/day-es@1.0.0/Day.min.js";
 // import { isHoliday } from "https://code4fukui.github.io/day-es/Holiday.js";
 //import { Cal } from "https://code4fukui.github.io/day-es/examples/day-calendar.js"; // reference
 
