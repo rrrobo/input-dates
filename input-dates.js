@@ -1,6 +1,6 @@
-import { style } from "https://js.sabae.cc/stdom.js";
-import { Day } from "https://code4fukui.github.io/day-es/Day.js";
-import { isHoliday } from "https://code4fukui.github.io/day-es/Holiday.js";
+import { style } from "./stdom.min.js";
+import { Day } from "https://cdn.jsdelivr.net/gh/rrrobo/day-es/Day.min.js";
+// import { isHoliday } from "https://code4fukui.github.io/day-es/Holiday.js";
 //import { Cal } from "https://code4fukui.github.io/day-es/examples/day-calendar.js"; // reference
 
 class InputDates extends HTMLElement {
@@ -142,12 +142,12 @@ class InputDates extends HTMLElement {
         const day = i - 6 - caloff;
         if (day > 0 && day <= lastday) {
           const dday = new Day(this.day.year, this.day.month, day);
-          const holiday = isHoliday(dday);
+          // const holiday = isHoliday(dday);
           //console.log(holiday, year, this.month, day);
           const cls = ["cellday"];
-          if (holiday) {
-            cls.push("holiday");
-          }
+          // if (holiday) {
+          //   cls.push("holiday");
+          // }
           if (this.checked.find(d => d.equals(dday))) {
             d.classList.add("checked");
           }
