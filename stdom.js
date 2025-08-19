@@ -8,14 +8,6 @@ const create = (tag, parent) => {
   return c;
 };
 
-const setDefaultStyle = () => {
-	style({
-    body: { "font-family": "sans-serif" },
-		table: { "border-collapse": "collapse", display: "inline-block" },
-		"td, th": { border: "1px solid gray", padding: "0 0.3em", "text-align": "center" },
-	});
-};
-
 const add = (tag, text) => {
   const o = create(tag);
   o.textContent = text;
@@ -100,33 +92,6 @@ const ul = (list) => {
   }
   return c;
 };
-
-if (globalThis.document) {
-  const setDoctype = () => {
-    const doctype = document.implementation.createDocumentType("html", "", "");
-    if (document.doctype) {
-      document.replaceChild(doctype, document.doctype);
-    } else {
-      document.insertBefore(doctype, document.childNodes[0]);
-    }
-  };
-  setDoctype();
-  
-  // <head><meta charset="utf-8">
-  /*
-  const utf8 = create("meta");
-  utf8.setAttribute("charset", "utf-8");
-  document.head.appendChild(utf8);
-  */
- 
-  // <meta name="viewport" content="width=device-width"></head>-->
-  const viewport = create("meta");
-  viewport.name = "viewport";
-  viewport.content = "width=device-width";
-  document.head.appendChild(viewport);
-
-  setDefaultStyle();
-}
 
 const getQueryParam = (name) => {
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
